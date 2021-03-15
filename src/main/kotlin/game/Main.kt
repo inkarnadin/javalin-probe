@@ -2,6 +2,7 @@ package game
 
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
+import java.time.LocalDate
 
 fun main() {
     val app = Javalin.create { config ->
@@ -18,7 +19,8 @@ fun main() {
             }
         }
         path("time") {
-            get(ManageController::time)
+            get { ctx -> ctx.json(LocalDate.now()).status(200) }
+            get(TimeController::time)
         }
     }
 
