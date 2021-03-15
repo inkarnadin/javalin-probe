@@ -1,8 +1,26 @@
 package game
 
 import io.javalin.Javalin
+import io.javalin.apibuilder.ApiBuilder.*
 
-fun main(args: Array<String>) {
-    val app = Javalin.create().start(7000)
-    app.get("/") { ctx -> ctx.result("Hello World") }
+fun main() {
+    val app = Javalin.create { config ->
+        config.defaultContentType = "application/json"
+        config.enableCorsForAllOrigins()
+    }.routes {
+        path("games") {
+            get(GameController::getAll)
+            post(GameController::create)
+            path(":game-id") {
+                get(GameController::get)
+                put(GameController::update)
+                delete(GameController::delete)
+            }
+        }
+        path("time") {
+            get(ManageController::time)
+        }
+    }
+
+    app.start(8081)
 }

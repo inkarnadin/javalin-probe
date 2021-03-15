@@ -13,6 +13,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("io.javalin", "javalin", "3.13.4")
     implementation("org.slf4j", "slf4j-simple", "1.7.30")
+    implementation("com.fasterxml.jackson.core", "jackson-databind", "2.10.3")
 
     testImplementation("junit", "junit", "4.12")
 }
