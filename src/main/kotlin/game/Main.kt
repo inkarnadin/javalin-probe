@@ -2,7 +2,6 @@ package game
 
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
-import java.time.LocalDate
 
 fun main() {
     val app = Javalin.create { config ->
