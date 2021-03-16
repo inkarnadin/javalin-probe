@@ -19,7 +19,6 @@ fun main() {
             }
         }
         path("time") {
-            get { ctx -> ctx.json(LocalDate.now()).status(200) }
             get(TimeController::time)
         }
     }
